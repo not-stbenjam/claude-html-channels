@@ -49,6 +49,10 @@ Include the channel-bridge.js contents in a `<script>` tag, then:
 - Make the page visually polished — clean, modern design
 - The floating toolbar (Send button, connection dot) is injected automatically
 - Use `localStorage` to persist the user's work across page refreshes
+- **Always include a feedback box** — a textarea where the user can type freeform
+  comments or instructions (e.g., "make it more budget-friendly", "add more outdoor
+  activities"). Include this in `getChannelData()` so it's sent along with the
+  structured data.
 
 ### 3. Create and open the session
 
