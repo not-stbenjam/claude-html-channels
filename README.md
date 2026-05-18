@@ -25,19 +25,15 @@ There are two ways to use this plugin depending on your Claude Code setup.
 
 If you're using Claude Code with an Anthropic account (claude.ai Pro/Max or Console API key), you can use **channels** for the best experience — browser data arrives in your conversation automatically.
 
-**Step 1: Register the MCP server**
-
-```bash
-claude mcp add html-channel node /path/to/claude-html-channels/lib/server.mjs
-```
-
-**Step 2: Start Claude with the plugin and channel enabled:**
+**Start Claude with the plugin and channel enabled:**
 
 ```bash
 claude \
   --plugin-dir /path/to/claude-html-channels \
-  --dangerously-load-development-channels server:html-channel
+  --dangerously-load-development-channels plugin:claude-html-channels:html-channel
 ```
+
+No need to run `claude mcp add` — the plugin includes the MCP server definition.
 
 **Then invoke the skill:**
 
