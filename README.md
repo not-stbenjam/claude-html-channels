@@ -23,15 +23,6 @@ claude plugin marketplace add ./claude-html-channels
 claude plugin install html-channel@claude-html-channels
 ```
 
-### Step 3: Install dependencies
-
-The plugin needs Node.js dependencies. After installing, run:
-
-```bash
-cd ~/.claude/plugins/cache/claude-html-channels/html-channel/*/
-npm install
-```
-
 ## Usage
 
 There are two ways to use this plugin depending on your Claude Code setup.
