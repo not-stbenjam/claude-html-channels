@@ -83,8 +83,12 @@ This will check `receive_from_browser` every 30 seconds.
 When data arrives (either way):
 1. Call `send_to_browser` with `type: "status"` to acknowledge receipt
 2. Process the data based on conversation context
-3. Call `send_to_browser` with `type: "data"` to push updates back
+3. Call `update_page` to persist the changes, then `send_to_browser` with `type: "refresh"`
 4. Call `send_to_browser` with `type: "done"` to signal completion
+
+**Important**: If multiple messages arrive, update the page after completing each task
+before continuing to the next. The user should see their changes applied incrementally,
+not all at once at the end.
 
 ## Updating the page
 
