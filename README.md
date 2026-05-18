@@ -28,7 +28,7 @@ If you're using Claude Code with an Anthropic account (claude.ai Pro/Max or Cons
 **Step 1: Register the MCP server**
 
 ```bash
-claude mcp add html-channel node /path/to/claude-html-channels/lib/server.mjs
+claude mcp add html-channel -- sh -c "cd /path/to/claude-html-channels && node lib/server.mjs"
 ```
 
 **Step 2: Start Claude with the plugin and channel enabled:**
