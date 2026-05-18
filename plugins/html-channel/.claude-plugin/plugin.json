@@ -1,5 +1,5 @@
 {
-  "name": "claude-html-channels",
+  "name": "html-channel",
   "description": "Bidirectional live channel between Claude and interactive HTML tools in the browser",
   "version": "0.1.0",
   "author": {

@@ -1,2 +1,4 @@
 node_modules/
 .work/
+plugins/*/node_modules/
+plugins/*/.work/

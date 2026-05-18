@@ -1,17 +1,34 @@
 # claude-html-channels
 
-A Claude Code plugin for building interactive HTML tools with a live bidirectional channel back to Claude.
+A Claude Code plugin marketplace for building interactive HTML tools with a live bidirectional channel back to Claude.
 
 **The pattern:** You ask Claude to build an interactive HTML tool (a screener, planner, curator, editor). You work in it — edit, annotate, prioritize, comment. When you're done, click "Send to Claude" and your changes flow back into the conversation. Claude processes them, pushes updates back to the browser, and the page re-renders live. No manual JSON export/import.
 
 ## Installation
 
-```bash
-# Clone the plugin
-git clone https://github.com/youruser/claude-html-channels.git
-cd claude-html-channels
+### Step 1: Add the marketplace
 
-# Install dependencies
+```bash
+# From GitHub
+claude plugin marketplace add stbenjam/claude-html-channels
+
+# Or from a local clone
+git clone https://github.com/stbenjam/claude-html-channels.git
+claude plugin marketplace add ./claude-html-channels
+```
+
+### Step 2: Install the plugin
+
+```bash
+claude plugin install html-channel@claude-html-channels
+```
+
+### Step 3: Install dependencies
+
+The plugin needs Node.js dependencies. After installing, run:
+
+```bash
+cd ~/.claude/plugins/cache/claude-html-channels/html-channel/*/
 npm install
 ```
 
@@ -25,24 +42,16 @@ There are two ways to use this plugin depending on your Claude Code setup.
 
 If you're using Claude Code with an Anthropic account (claude.ai Pro/Max or Console API key), you can use **channels** for the best experience — browser data arrives in your conversation automatically.
 
-**Step 1: Register the MCP server**
+**Start Claude with the channel enabled:**
 
 ```bash
-claude mcp add html-channel -- sh -c "cd /path/to/claude-html-channels && node lib/server.mjs"
-```
-
-**Step 2: Start Claude with the plugin and channel enabled:**
-
-```bash
-claude \
-  --plugin-dir /path/to/claude-html-channels \
-  --dangerously-load-development-channels server:html-channel
+claude --dangerously-load-development-channels plugin:html-channel@claude-html-channels
 ```
 
 **Then invoke the skill:**
 
 ```
-/claude-html-channels:channel-start build me a trip itinerary planner for 4 days in Tokyo
+/html-channel:channel-start build me a trip itinerary planner for 4 days in Tokyo
 ```
 
 Claude will:
@@ -57,16 +66,16 @@ Claude will:
 
 If you're using Claude Code with a third-party API provider, channels aren't available. The plugin still works — you just use an MCP tool to receive browser data instead of it arriving automatically.
 
-**Start Claude with the plugin:**
+**Start Claude with the plugin enabled:**
 
 ```bash
-claude --plugin-dir /path/to/claude-html-channels
+claude
 ```
 
 **Invoke the skill:**
 
 ```
-/claude-html-channels:channel-start build me a trip itinerary planner for 4 days in Tokyo
+/html-channel:channel-start build me a trip itinerary planner for 4 days in Tokyo
 ```
 
 **When you're ready to send your changes:**
@@ -144,7 +153,7 @@ The `html-channel` MCP server provides these tools:
 
 ## Building HTML Tools
 
-When you invoke `/claude-html-channels:channel-start`, Claude generates an HTML page following these patterns:
+When you invoke `/html-channel:channel-start`, Claude generates an HTML page following these patterns:
 
 ### Data Architecture
 
