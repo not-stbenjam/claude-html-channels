@@ -1,0 +1,8 @@
+{
+  "name": "claude-html-channels",
+  "description": "Bidirectional live channel between Claude and interactive HTML tools in the browser",
+  "version": "0.1.0",
+  "author": {
+    "name": "stbenjam"
+  }
+}
