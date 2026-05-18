@@ -1,9 +1,15 @@
 {
-  "name": "claude-html-channels",
+  "name": "html-channel",
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "esbuild lib/server.mjs --bundle --platform=node --target=node18 --outfile=lib/server.bundle.mjs --format=esm"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
   }
 }

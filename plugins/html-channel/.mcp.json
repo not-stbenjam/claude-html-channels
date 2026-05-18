@@ -2,7 +2,7 @@
   "mcpServers": {
     "html-channel": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/lib/server.mjs"]
+      "args": ["${CLAUDE_PLUGIN_ROOT}/lib/server.bundle.mjs"]
     }
   }
 }
