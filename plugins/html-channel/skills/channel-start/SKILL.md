@@ -65,23 +65,26 @@ Open the URL in the browser (use `xdg-open` on Linux, `open` on macOS).
 - Explain they can click **Send to Claude** when ready
 - Let them know you're listening for their input
 
-### 5. Start the receive loop
+### 5. Wait for input
 
-After opening the browser, start polling for browser input:
+**If channels are enabled** (you were started with `--channels` or 
+`--dangerously-load-development-channels`), browser data arrives automatically
+as `<channel source="html-channel">` messages. Just wait for the user to click
+"Send to Claude" — you'll receive the data directly in the conversation.
+
+**If channels are NOT enabled** (third-party API provider), start polling:
 
 ```
 /loop 30s receive and process browser input from the HTML channel
 ```
 
-This will check `receive_from_browser` every 30 seconds. When data arrives:
+This will check `receive_from_browser` every 30 seconds.
+
+When data arrives (either way):
 1. Call `send_to_browser` with `type: "status"` to acknowledge receipt
 2. Process the data based on conversation context
 3. Call `send_to_browser` with `type: "data"` to push updates back
 4. Call `send_to_browser` with `type: "done"` to signal completion
-
-If channels are enabled, data arrives automatically as `<channel>` messages and the
-loop acts as a backup. Either way, the user doesn't need to do anything — just click
-"Send to Claude" in the browser and wait.
 
 ## Updating the page
 
