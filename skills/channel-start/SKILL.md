@@ -97,6 +97,9 @@ There are two ways to send data back to the browser:
 - The new `DATA` constant contains the updated values
 - More robust for final results; the user can refresh and still see your changes
 - After calling `update_page`, send `type: "refresh"` to auto-reload the browser
+- **Keep the same page structure** — only update the `DATA` constant and any
+  necessary logic changes. Do NOT redesign the layout, colors, or UI on updates.
+  The user is familiar with the current design; preserve it.
 
 **Rule of thumb**: Use `send_to_browser` for progress updates and previews. Use
 `update_page` when you're done processing and want the changes to stick.
